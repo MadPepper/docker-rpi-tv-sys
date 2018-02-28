@@ -1,4 +1,4 @@
-FROM node:8.9-alpine
+FROM arm32v6/node:8-alpine
 LABEL maintainer "h-mineta <h-mineta@0nyx.net>"
 
 ENV DOCKER="YES"

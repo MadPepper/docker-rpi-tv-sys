@@ -1,9 +1,9 @@
-FROM node:8.9-alpine
+FROM arm32v6/node:8-alpine
 LABEL maintainer "h-mineta <h-mineta@0nyx.net>"
 
 ENV DOCKER="YES"
 ARG REPOSITORY="git://github.com/Chinachu/Chinachu.git"
-ARG BRANCH="master"
+ARG BRANCH="gamma"
 
 ARG WORK_DIR="/usr/local/chinachu"
 
@@ -68,4 +68,4 @@ COPY config.sample.json ${WORK_DIR}
 
 WORKDIR ${WORK_DIR}
 CMD ["/usr/local/bin/services.sh"]
-EXPOSE 10772 20772 5353
+EXPOSE 10772 20772 5354
