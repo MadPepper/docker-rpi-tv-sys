@@ -1,6 +1,7 @@
 # docker-mirakurun-chinachu
-Mirakurun と Chinachu をDockerコンテナに閉じ込めました
+本家のChinachu with mirakurun on DockerをRaspberry pi 3で動作するように改変しています。
 
+## 以下編集中
 ## Constitution
 ### Mirakurun
 - Alpine Linux 3.6(node:8.9-alpine)
