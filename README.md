@@ -1,6 +1,7 @@
 # docker-mirakurun-chinachu on Raspberrypi3 with KTV-FSUSB2N
 本家のChinachu with mirakurun on DockerをRaspberry pi 3で動作するように改変しています。
 また、それにあたりPT系チューナではなくKEIANのKTV-FSUSB2Nを使用するように変更しています。
+まだデバッグ段階で一般使用に耐えないので、ログ出力が有効になっています。
 
 ## できていること
 - リアルタイム視聴（XSPFによるストリーム再生及びTVTest+MirakurunBonDriver)
