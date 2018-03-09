@@ -56,12 +56,12 @@ RUN set -x \
 	&& npm cache verify \
 	&& apk del --purge .build-deps \
 	#&& rm -rf /tmp/* \
-	&& rm -rf /var/cache/apk/*
+	&& rm -rf /var/cache/apk/* \
 
 	# forward request and error logs to docker log collector
-	#&& ln -sf /dev/stdout ${WORK_DIR}/log/operator \
-	#&& ln -sf /dev/stdout ${WORK_DIR}/log/scheduler \
-	#&& ln -sf /dev/stdout ${WORK_DIR}/log/wui
+	&& ln -sf /dev/stdout ${WORK_DIR}/log/operator \
+	&& ln -sf /dev/stdout ${WORK_DIR}/log/scheduler \
+	&& ln -sf /dev/stdout ${WORK_DIR}/log/wui
 
 COPY services.sh /usr/local/bin
 COPY config.sample.json ${WORK_DIR}

@@ -11,6 +11,8 @@ services:
      - /etc/localtime:/etc/localtime:ro
      - ./mirakurun/conf:/usr/local/etc/mirakurun
      - ./mirakurun/db:/usr/local/var/db/mirakurun
+    devices:
+     - /dev/bus/usb/*:/dev/bus/usb/*
 
   chinachu:
     build:
