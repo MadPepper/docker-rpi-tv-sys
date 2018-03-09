@@ -1,5 +1,5 @@
 FROM arm32v6/node:8-alpine
-LABEL maintainer "h-mineta <h-mineta@0nyx.net>"
+LABEL maintainer "madpepper <hyper.pepper+github@gmail.com>"
 
 ENV DOCKER="YES"
 

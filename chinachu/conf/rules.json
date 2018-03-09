@@ -1,1 +1,131 @@
-[]
+[
+  {
+    "types": [
+      "GR"
+    ],
+    "categories": [
+      "anime"
+    ],
+    "channels": [
+      "1i597ds"
+    ],
+    "ignore_flags": [
+      "再"
+    ],
+    "hour": {
+      "start": 0,
+      "end": 24
+    },
+    "reserve_titles": [
+      "恋は雨上がりのように＜ノイタミナ＞"
+    ],
+    "recorded_format": ""
+  },
+  {
+    "types": [
+      "GR"
+    ],
+    "categories": [
+      "anime"
+    ],
+    "channels": [
+      "1hkhnrs"
+    ],
+    "ignore_flags": [
+      "再"
+    ],
+    "hour": {
+      "start": 0,
+      "end": 24
+    },
+    "reserve_titles": [
+      "刻刻"
+    ],
+    "recorded_format": ""
+  },
+  {
+    "types": [
+      "GR"
+    ],
+    "categories": [
+      "anime"
+    ],
+    "channels": [
+      "1hkhnrs"
+    ],
+    "ignore_flags": [
+      "再"
+    ],
+    "hour": {
+      "start": 0,
+      "end": 24
+    },
+    "reserve_titles": [
+      "ハクメイとミコチ"
+    ],
+    "recorded_format": ""
+  },
+  {
+    "types": [
+      "GR"
+    ],
+    "categories": [
+      "anime"
+    ],
+    "channels": [
+      "1hkhnrs"
+    ],
+    "ignore_flags": [
+      "再"
+    ],
+    "hour": {
+      "start": 0,
+      "end": 24
+    },
+    "reserve_titles": [
+      "働くお兄さん！"
+    ],
+    "recorded_format": ""
+  },
+  {
+    "types": [
+      "GR"
+    ],
+    "categories": [
+      "anime"
+    ],
+    "ignore_flags": [
+      "再"
+    ],
+    "hour": {
+      "start": 0,
+      "end": 24
+    },
+    "reserve_titles": [
+      "BEATLESS"
+    ],
+    "recorded_format": ""
+  },
+  {
+    "types": [
+      "GR"
+    ],
+    "categories": [
+      "anime"
+    ],
+    "channels": [
+      "1hkhnrs"
+    ],
+    "ignore_flags": [
+      "再"
+    ],
+    "hour": {
+      "start": 0,
+      "end": 24
+    },
+    "reserve_titles": [
+      "ヴァイオレット・エヴァーガーデン"
+    ],
+    "recorded_format": ""
+  }
+]
