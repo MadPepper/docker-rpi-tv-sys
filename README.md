@@ -1,123 +1,54 @@
-# docker-mirakurun-chinachu
+# docker-mirakurun-chinachu on Raspberrypi3 with KTV-FSUSB2N
 本家のChinachu with mirakurun on DockerをRaspberry pi 3で動作するように改変しています。
+また、それにあたりPT系チューナではなくKEIANのKTV-FSUSB2Nを使用するように変更しています。
+まだデバッグ段階で一般使用に耐えないので、ログ出力が有効になっています。
 
-## 以下編集中
+## できていること
+- リアルタイム視聴（XSPFによるストリーム再生及びTVTest+MirakurunBonDriver)
+- 録画予約・録画
+- 裏番組録画
+- そのほかChinachuのだいたいの操作
+
+## できていないこと
+- 2番組同時視聴
+- 録画中のライブ視聴
+- 番組切り替えを頻繁に行った際のエラー対処
+
 ## Constitution
 ### Mirakurun
-- Alpine Linux 3.6(node:8.9-alpine)
+- Alpine Linux 3.6(arm32v6/node:8-alpine)
 - [Mirakurun](https://github.com/kanreisa/Mirakurun)
   - branch: master
 
 ### Chinachu
-- Alpine Linux 3.6(node:8.9-alpine)
+- Alpine Linux 3.6(arm32v6/node:8-alpine)
 - [Chinachu](https://github.com/kanreisa/Chinachu)
   - branch: gamma
 
 ## 動作確認環境
 > OS
->>CentOS Linux release 7.2.1511 (Core)  
->> Linux 3.10.0-327.22.2.el7.x86_64  
->
->>Fedora release 25 (Twenty Five)  
->> Linux 4.9.4-201.fc25.x86_64  
-
+>>Raspbian stretch lite (2007/11/29)
+>> Linux 4.9.59-v7+
 >Docker
->>version 1.11.2, build b9f10c9  
->>version 17.03.0-ce, build 60ccb22  
+>>version 18.02.0-ce, build fc4de44  
 
 >Tuner
->>ISDB-S, ISDB-T Tuner PT3  
+>>KTV-FSUSB2N(FW書き換え済み)
 
 >Smart card reader
->>USB SmartCard Reader NTT Communications Corp. SCR3310-NTTCom  
+>>KTV-FSUSB2N
 
 ## 利用方法
 - 最新のdocker & docker-compose がインストール済
 - SELinuxの無効化推奨
-- ホストマシンにPT3 Driverがインストール済
-```
-$ ls -l /dev/pt*video*
-crw-rw-rw- 1 root video 246, 0 Jun 26 16:07 /dev/pt3video0
-crw-rw-rw- 1 root video 246, 1 Jun 26 16:07 /dev/pt3video1
-crw-rw-rw- 1 root video 246, 2 Jun 26 16:07 /dev/pt3video2
-crw-rw-rw- 1 root video 246, 3 Jun 26 16:07 /dev/pt3video3
-```
-- B-CAS 用に利用するスマートカードリーダーはMirakurunコンテナ内で管理しますので  
-ホストマシン上のpcscdは停止してください
-```
-sudo systemctl stop pcscd.socket
-sudo systemctl disable pcscd.socket
+- ホストマシンのUSBデバイスへのアクセスを追加
+```docker-compose.yml
+- device:
+ - /dev/bus/usb/*:/dev/bus/usb/*
 ```
 
-- docker-composeを利用しておりますので、プロジェクトディレクトリ内で下記コマンドを実行してください  
-プロジェクトディレクトリ名はビルド時のレポジトリ名になりますので、適当に短いフォルダ名が推奨です
-
-### 取得例
-```shell
-git clone https://github.com/h-mineta/docker-mirakurun-chinachu.git tvs
-cd tvs
-```
-### 起動
-```shell
-docker-compose up -d
-```
-### 停止
-```shell
-docker-compose down
-```
-
-### デーモン化(systemd)
-初期では「WorkingDirectory」が「/usr/local/projects/tvs/」となっています  
-設置した箇所に応じて、書き換えてください
-```shell
-vi mirakurun-user.service
-vi chinachu-user.service
-```
-
-ユーザ固有サービスとして動かすため、設定します
-```shell
-mkdir -p ~/.config/systemd/user/
-mv mirakurun-user.service ~/.config/systemd/user/
-mv chinachu-user.service ~/.config/systemd/user/
-## 永続化(次回OS起動時に自動で起動)
-systemctl --user enable mirakurun-user.service
-systemctl --user enable chinachu-user.service
-sudo loginctl enable-linger `whoami`
-
-# 手動起動
-systemctl --user start mirakurun-user.service
-systemctl --user start chinachu-user.service
-
-# 動作確認
-systemctl --user status mirakurun-user.service
-systemctl --user status chinachu-user.service
-
-# 手動停止
-systemctl --user stop mirakurun-user.service
-systemctl --user stop chinachu-user.service
-```
-
-## 設定
-エリア、環境によって変更が必要なファイルは下記の通りとなります
-### Mirakurun
-- ポート番号 : 40772
-- mirakurun/conf/tuners.yml  
-チューナー設定
-- mirakurun/conf/channels.yml  
-チャンネル設定
-
-### Chinachu
-- ポート番号 : 10772, 20772(local network only), 5353/udp(mDNS)
-- chinachu/conf/config.json  
-チューナー設定  
-チャンネル設定
-
-### 録画ファイル保存先
-また録画ファイルはプロジェクトフォルダ内の./recordedに保存されます  
-> 保存先を別HDDにしたい場合は、docker-compose.ymlの
->> ./recorded:/usr/local/chinachu/recorded
->
-> の./recordedを変更することで保存先を変更可能
+- その他の設定は本家に準じます
+-- [Chinachu/docker-mirakurun-chinachu: All in one Mirakurun & Chinachu](https://github.com/Chinachu/docker-mirakurun-chinachu)
 
 ## License
 This software is released under the MIT License, see LICENSE.
