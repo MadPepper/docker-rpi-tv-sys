@@ -3,7 +3,7 @@
 また、それにあたりPT系チューナではなくKEIANのKTV-FSUSB2Nを使用するように変更しています。
 
 ## できていること
-- リアルタイム視聴（XPFFによるストリーム再生及びTVTest+MirakurunBonDriver)
+- リアルタイム視聴（XSPFによるストリーム再生及びTVTest+MirakurunBonDriver)
 - 録画予約・録画
 - 裏番組録画
 - そのほかChinachuのだいたいの操作
