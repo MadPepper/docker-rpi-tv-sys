@@ -9,8 +9,12 @@ ARG WORK_DIR="/usr/local/chinachu"
 
 #node container default value
 ARG USER_NAME="node" 
+ARG USER_ID=1000
+ARG GROUP_NAME=madpepper
+ARG GROUP_ID=1000
 
 RUN set -x \
+    \
 	&& apk upgrade --update \
 	&& apk add \
 		bash \
@@ -35,7 +39,12 @@ RUN set -x \
 		musl-dev \
 		eudev-dev \
 		libevent-dev \
-	\
+        shadow \
+    \
+    #set userid and group
+    && groupadd -g ${GROUP_ID} ${GROUP_NAME} \
+    && usermod -u ${USER_ID} -aG ${GROUP_ID} node \
+    \
 	&& mkdir -p ${WORK_DIR} \
 	&& git clone ${REPOSITORY} ${WORK_DIR} \
 	&& chown -R ${USER_NAME} ${WORK_DIR} \
