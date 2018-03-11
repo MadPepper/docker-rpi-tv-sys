@@ -25,6 +25,8 @@ if [ ${run_countdown} -ge ${countdown_max} ]; then
 	echo "mirakurun is timeout"
 fi
 
+id
+
 /etc/init.d/chinachu-operator start
 /etc/init.d/chinachu-wui start
 

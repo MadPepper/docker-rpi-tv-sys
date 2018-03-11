@@ -20,6 +20,9 @@ services:
         args:
          - REPOSITORY=git://github.com/Chinachu/Chinachu.git
          - BRANCH=gamma
+         - USER_ID=1001
+         - GROUP_NAME=madpepper
+         - GROUP_ID=1001
     container_name: chinachu
     ports:
      - "10772:10772"
