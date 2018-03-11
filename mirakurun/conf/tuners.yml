@@ -1,6 +1,11 @@
-- name: FSUSB2N
+- name: FSUSB2N0
   types:
     - GR
   command: recfsusb2n -b <channel> - -
   isDisabled: false
 
+- name: FSUSB2N1
+  types:
+    - GR
+  command: recfsusb2n -b <channel> - -
+  isDisabled: false
